@@ -18,19 +18,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MimeTypes
 import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
-import androidx.media3.exoplayer.offline.DownloadHelper
 import androidx.media3.exoplayer.offline.DownloadRequest
 import androidx.media3.exoplayer.offline.DownloadService
 import androidx.media3.ui.PlayerView
-import kotlinx.coroutines.launch
-import java.io.IOException
 
 
 class MainActivity : AppCompatActivity() {
@@ -57,8 +53,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var controlsContainer : View
     private val hideHandler = Handler(Looper.getMainLooper())
 
-   // private val videoUrl = "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8" // HLS sample
-    private val videoUrl = "https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4" // mp4 sample
+    private val videoUrl = "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8" // HLS sample
+   // private val videoUrl = "https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4" // mp4 sample
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -255,34 +251,34 @@ class MainActivity : AppCompatActivity() {
 
         //download
         findViewById<ImageView>(R.id.btnDownload).setOnClickListener {
-//            val mediaItem = MediaItem.fromUri(videoUrl)
-//
-//            val downloadRequest = DownloadRequest.Builder("video1", mediaItem.localConfiguration!!.uri)
-//                .setMimeType(MimeTypes.APPLICATION_M3U8)
-//                .build()
-//
-//            DownloadService.sendAddDownload(
-//                this,
-//                MyDownloadService::class.java,
-//                downloadRequest,
-//                false
-//            )
-//
-//            Toast.makeText(this, "Download started", Toast.LENGTH_SHORT).show()
+            val mediaItem = MediaItem.fromUri(videoUrl)
 
-            val request = DownloadRequest.Builder(
-                "video1",
-                Uri.parse(videoUrl)
-            ).build()
+            val downloadRequest = DownloadRequest.Builder("video1", mediaItem.localConfiguration!!.uri)
+                .setMimeType(MimeTypes.APPLICATION_M3U8)
+                .build()
 
             DownloadService.sendAddDownload(
                 this,
                 MyDownloadService::class.java,
-                request,
+                downloadRequest,
                 false
             )
 
             Toast.makeText(this, "Download started", Toast.LENGTH_SHORT).show()
+
+//            val request = DownloadRequest.Builder(
+//                "video1",
+//                Uri.parse(videoUrl)
+//            ).build()
+//
+//            DownloadService.sendAddDownload(
+//                this,
+//                MyDownloadService::class.java,
+//                request,
+//                false
+//            )
+//
+//            Toast.makeText(this, "Download started", Toast.LENGTH_SHORT).show()
         }
 
 
