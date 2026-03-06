@@ -210,10 +210,10 @@ https://proxy.uat.widevine.com/proxy?provider=widevine_test
 ![Player](screenshots/player_screen.png)
 
 ### Settings Screen
-![Player](screenshots/setting_screen.png)
+![Settings](screenshots/setting_screen.png)
 
 ### Select Video Quality Screen
-![Player](screenshots/video_quality_screen.png)
+![Video Quality](screenshots/video_quality_screen.png)
 
 ### Fullscreen Mode
 ![Fullscreen](screenshots/fullscreen_mode.png)
@@ -251,8 +251,6 @@ This project demonstrates core OTT concepts such as:
 # Author
 
 Anil Kumar  
-
-Android Developer with **6+ years of experience** building scalable Android applications using Kotlin and modern Android architecture.
 
 ---
 
